@@ -3,9 +3,13 @@ class Incoming_doc
   
   # Список файлов в директории со входящими документами
   def self.list
-    Dir.entries(Configuration.incoming_dir).select { |filename| !File.directory? filename }
+    get_files_from_dir Configuration.incoming_dir
+    #Dir.entries(Configuration.incoming_dir).select { |filename| !File.directory? filename }
   end
   
+  def self.get_files_from_dir directory
+    Dir.entries(directory).select { |filename| !File.directory? filename }
+  end
   # Проверяем существование файла
   def self.exist?(document_file_name)
   	File.exist?(Configuration.incoming_dir + document_file_name)
