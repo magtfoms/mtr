@@ -1,0 +1,20 @@
+<br/>
+Документ: <b><%=@file_name%></b>
+<br/>
+<% unless @validate_document[0].nil? then %>
+  Загрузить документ:
+  <%= link_to @file_unpacked_name, incoming_docs_download_url %>
+  <% if @validate_document[0] == false then %>
+    <br/>
+    Документ не прошел проверку и не должен приниматься в обработку!
+    <br/>
+  <% end %>
+<% end %>
+
+<br/>
+
+<b>Информация о документе:</b>
+<br/><br/>
+<% @validate_document[2].each do |str| %>
+    <%=str%><br/>
+<% end %>

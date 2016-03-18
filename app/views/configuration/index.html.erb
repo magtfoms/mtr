@@ -1,0 +1,39 @@
+<h1>Настройки:</h1>
+
+<h1>Зарегистрированные пользователи:</h1>
+<% @users.each do |user| %>
+    <i><%=user.email%></i><br/>
+<% end %>
+
+<h1>Типы документов:</h1>
+<% @document_codes.each do |code| %>
+    <i><%=code.code%></i>:&nbsp;<i><%=code.name%></i><br/>
+<% end %>
+
+<p>Выберите тип документа:
+<%= collection_select(:name, :code, @document_codes, :code, :name, :include_blank => "...") %>
+</p>
+
+<h1>Список ТФОМС:</h1>
+<% @tfoms_codes.each do |code| %>
+    <i><%=code.code%></i>:&nbsp;<i><%=code.name%></i><br/>
+<% end %>
+
+<p>Выберите ТФОМС:
+<%= collection_select(:name, :code, @tfoms_codes, :code, :name, :include_blank => "...") %>
+</p>
+
+<h1>Настройки:</h1>
+<% @configuration.each do |cfg| %>
+    <i><%=cfg.name%></i>&nbsp;<i><%=cfg.description%></i>&nbsp;<i><%=cfg.value%></i><br/>
+<% end %>
+    
+<h1>Отозванные сертификаты:</h1>
+<% @crl_files.each do |crl| %>
+    <i><%=crl.name%></i>&nbsp;<i><%=crl.description%></i>&nbsp;<i><%=crl.url%></i>&nbsp;<i><%=crl.filename%></i><br/>
+<% end %>    
+
+<h1>Сертификаты:</h1>
+<% @ca_files.each do |ca| %>
+    <i><%=ca.name%></i>&nbsp;<i><%=ca.description%></i>&nbsp;<i><%=ca.url%></i>&nbsp;<i><%=ca.filename%></i><br/>
+<% end %>     

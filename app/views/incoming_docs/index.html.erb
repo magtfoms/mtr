@@ -1,0 +1,9 @@
+<h1>Входящие документы:</h1>
+
+<%= form_tag("/incoming_docs/show", method: "post") do %>
+  Выберите документ:
+  <p>
+    <%= collection_select(:document, :document_file_name, @incoming_docs, :to_s, :to_s, {include_blank: false}, {size: "20"}) %>
+  </p>
+  <%= submit_tag("Перейти к документу") %>
+<% end %>
